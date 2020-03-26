@@ -1,7 +1,7 @@
 ---
 published: false
 title: 'Docker ARG y Variables de Entorno'
-cover_image: 'https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/docker-arg-y-variables-de-entorno/assets/cover_image.png'
+cover_image: 'https://raw.githubusercontent.com/ruslanguns/dev.to/master/blog-posts/docker-arg-y-variables-de-entorno/assets/cover_image.png'
 description: 'Te enseñaré cómo usar los argumentos o variables de entorno en Docker'
 tags: docker, docker-compose, deploy, arg, arguments, development, software, backend, argumentos, variables de entorno
 series:
@@ -15,7 +15,7 @@ Voy a mostrarte aquí un breve ejemplo para usar las variables de entorno en el 
 
 >Pero antes de todo, **¿qué es una variable de entorno?**
 
-Una variable de entorno según la [wikipedia](https://en.wikipedia.org/wiki/Environment_variable) es un valor con nombre dinámico que puede afectar la forma en que los procesos en ejecución se comportarán en una computadora. Son parte del entorno en el que se ejecuta un proceso. En otras palabras, imaginemos estamos creando un contenedor que despliegue una imagen con base de datos como MySQL o Postgres, si vamos a las documentaciones oficiales notaremos que para crear una contraseña o un nombre para una base de datos debemos enviarle unos parámetros:
+Una variable de entorno según la [wikipedia][wiki-env] es un valor con nombre dinámico que puede afectar la forma en que los procesos en ejecución se comportarán en una computadora. Son parte del entorno en el que se ejecuta un proceso. En otras palabras, imaginemos estamos creando un contenedor que despliegue una imagen con base de datos como MySQL o Postgres, si vamos a las documentaciones oficiales notaremos que para crear una contraseña o un nombre para una base de datos debemos enviarle unos parámetros:
 
 Ejemplo:
 
@@ -23,8 +23,7 @@ Ejemplo:
 docker run -e MYSQL_ROOT_PASSWORD=mi-contraseña mysql
 ```
 
-> Ve a [este enlace](https://hub.docker.com/_/mysql) para saber cómo construir un contenedor de Mysql
-
+> Ve a [este enlace][docker-hub-mysql] para saber cómo construir un contenedor de Mysql
 
 Si ejecutamos este comando, notaremos intuitivamente que si pasamos el valor a la variable `MYSQL_ROOT_PASSWORD=mi-contraseña` siendo 'mi-contraseña' la contraseña ROOT que estamos asignando a nuestra base de datos y ésta variable de entorno es la que usaremos a continuación para comunicarnos con la base de datos. Lo más probable que hayas configurado cientos de veces este tipo de variables, y puede que a lo mejor te preguntes cómo instalarla en nuestra imagen, justamente eso es lo que intentaré enseñarte en este artículo.
 
@@ -43,7 +42,7 @@ Vamos a crear una imagen que nos devuelva un Hola mundo en Docker que nos será 
 Creamos una carpeta en nuestro ordenador en el lugar que queramos, accedemos a ella y dentro creamos un archivo llamado "Dockerfile".
 
 ```bash
-$ mkdir docker-env && cd docker-env
+mkdir docker-env && cd docker-env
 ```
 
 A continuación vamos a crear un archivo con el nombre Dockerfile y en este la siguiente configuración:
@@ -55,6 +54,7 @@ CMD echo "Hola ${NAME}!"
 ```
 
 ¿Qué tenemos aquí?
+
 * **FROM alpine:3.7**: Con esto vamos a indicarle a Docker la fuente o sistema operativo de nuestra imagen.
 * **ARG NAME**: Con la opción ARG indicamos el argumento que deseamos para nuestra imagen. Con esto le decimos a Docker, tu esperarás un argumento personalizado al momento de crear la imagen.
 * **RUN echo "Hola ${NAME}!"** Finalmente con esto estamos diciendole a Docker el comando que queremos que ejecute al momento de lanzar la imagen.
@@ -198,15 +198,21 @@ Creo que esta bastante claro que Docker es una solución completa y muy personal
 
 ## Leer más:
 
-* Documentación oficial: [Argumentos en Docker](https://docs.docker.com/engine/reference/builder/#arg).
+* Documentación oficial: [Argumentos en Docker][docker-docs-arg].
 
 # ¿Has encontrado un error en mi artículo?
 
-Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa que debería mejorar y que debe ser actualizado en este post, puedes hacer un fork de [mi repositorio](https://github.com/ruslanguns/dev.to) y enviarme un Pull Request con la corrección, o bien, en lugar de hacer un comentario, ruego me lo reportes en [el apartado de los issues de mi repositorio](https://github.com/ruslanguns/dev.to/issues).
+Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa que debería mejorar y que debe ser actualizado en este post, puedes hacer un fork de [mi repositorio][repositorio] y enviarme un Pull Request con la corrección, o bien, en lugar de hacer un comentario, ruego me lo reportes en [el apartado de los issues de mi repositorio][issues].
 
 
 <!-- TAGGED LINKS -->
 [alpine_images]: https://hub.docker.com/_/alpine
 [docker-compose-variables]: https://docs.docker.com/compose/environment-variables/
+[docker-docs-arg]: https://docs.docker.com/engine/reference/builder/#arg
+[docker-hub-mysql]: https://hub.docker.com/_/mysql
+[wiki-env]: https://en.wikipedia.org/wiki/Environment_variable
 <!-- images -->
 [docker2]: ./assets/docker2.jpg "Imagen 1"
+<!-- Repositorio -->
+[issues]: https://github.com/ruslanguns/my-dev-articles/issues
+[repositorio]: https://github.com/ruslanguns/my-dev-articles
