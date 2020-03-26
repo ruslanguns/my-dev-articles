@@ -1,6 +1,6 @@
 ---
-published: false
-title: "Argmentos y variables de entorno en Docker"
+published: true
+title: "Argumentos y variables de entorno en Docker"
 cover_image: "https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/docker-arg-y-variables-de-entorno/assets/cover_image.png"
 description: "Te enseñaré cómo usar los argumentos o variables de entorno en Docker"
 tags: docker, arguments, arg, env
@@ -8,15 +8,21 @@ series:
 canonical_url:
 ---
 
-# Introducción
+## Introducción
 
 Este artículo esta dirigido para personas que tienen experiencia básica con Docker, o bien desean repasar un poco las bondades que nos ofrece este sistema de contenedores.
 
 Voy a mostrarte aquí un breve ejemplo para usar las variables de entorno en el despliegue de contenedores en Docker, asimismo te enseñaré cómo configurarlas de forma dinámica.
 
->Pero antes de todo, **¿qué es una variable de entorno?**
+> Pero antes de todo, **¿qué es una variable de entorno?**
 
-Una variable de entorno según la [wikipedia][wiki-env] es un valor con nombre dinámico que puede afectar la forma en que los procesos en ejecución se comportarán en una computadora. Son parte del entorno en el que se ejecuta un proceso. En otras palabras, imaginemos estamos creando un contenedor que despliegue una imagen con base de datos como MySQL o Postgres, si vamos a las documentaciones oficiales notaremos que para crear una contraseña o un nombre para una base de datos debemos enviarle unos parámetros:
+Una variable de entorno según la [wikipedia][wiki-env] — es un valor con nombre dinámico que puede afectar la forma en que los procesos en ejecución se comportarán en una computadora. Son parte del entorno en el que se ejecuta un proceso —. En otras palabras, imaginemos estamos creando un contenedor que despliegue una imagen con base de datos como MySQL o Postgres, si vamos a las documentaciones oficiales notaremos que para crear una contraseña o un nombre para una base de datos debemos enviarle unos parámetros:
+
+También es importante que sepamos qué es un argumento y cómo se diferencia de una variable de entorno.
+
+Según nuestra [wikipedia][wiki-arg], — un parámetro es una variable utilizada para recibir valores de entrada en una rutina, subrutina o método. Dichos valores, que serán enviados desde la rutina invocante, son llamados argumentos —. Entonces es un parámetro que "recibe" un valor por parte de las variables de entorno para ejecutar una rutina, o un proceso, en este caso para nuestras imágenes.
+
+Si estos conceptos no los tienes muy claros, no te preocupes, intentaré explicártelo en el resto del artículo con un ejemplo práctico en el que tú podrás diferenciar el uno del otro.
 
 Ejemplo:
 
@@ -28,17 +34,17 @@ docker run -e MYSQL_ROOT_PASSWORD=mi-contraseña mysql
 
 Si ejecutamos este comando, notaremos intuitivamente que si pasamos el valor a la variable `MYSQL_ROOT_PASSWORD=mi-contraseña` siendo 'mi-contraseña' la contraseña ROOT que estamos asignando a nuestra base de datos y ésta variable de entorno es la que usaremos a continuación para comunicarnos con la base de datos. Lo más probable que hayas configurado cientos de veces este tipo de variables, y puede que a lo mejor te preguntes cómo instalarla en nuestra imagen, justamente eso es lo que intentaré enseñarte en este artículo.
 
-# Inspiración
+## Inspiración
 
 Cuando programas y haces el deploy de una aplicación, te enfrentas a diferentes retos y procesos, que en este oficio, siempre van en aumento. Hace un tiempo atrás miraba la necesidad de crear una configuración, que sin las variables de entorno, hubiera sido imposible lograr el cometido.
 
 El uso de argumentos y variables de entorno nos trae un excelente beneficio para comunicarnos con la aplicación mediante parámetros de configuración, data que preferiblemente, y en la mayoría de los casos, debe ser secreta, incluso nos puede ayudar a crear diferentes entornos de programación utilizando una sola configuración.
 
-# Vamos a la práctica
+## Vamos a la práctica
 
 Vamos a crear una imagen que nos devuelva un Hola mundo en Docker que nos será suficiente para aprender a utilizar esta técnica.
 
-## Creación de nuestro entorno de trabajo
+### Creación de nuestro entorno de trabajo
 
 Creamos una carpeta en nuestro ordenador en el lugar que queramos, accedemos a ella y dentro creamos un archivo llamado "Dockerfile".
 
@@ -48,7 +54,7 @@ mkdir docker-env && cd docker-env
 
 A continuación vamos a crear un archivo con el nombre Dockerfile y en este la siguiente configuración:
 
-```
+```sh
 // Dockerfile
 FROM alpine:3.7
 ARG NAME
@@ -59,7 +65,7 @@ CMD echo "Hola ${NAME}!"
 
 * **FROM alpine:3.7**: Con esto vamos a indicarle a Docker la fuente o sistema operativo de nuestra imagen.
 * **ARG NAME**: Con la opción ARG indicamos el argumento que deseamos para nuestra imagen. Con esto le decimos a Docker, tu esperarás un argumento personalizado al momento de crear la imagen.
-* **CMD echo "Hola ${NAME}!"** Finalmente con esto estamos diciendole a Docker el comando que queremos que ejecute al momento de lanzar la imagen.
+* **CMD echo "Hola ${NAME}!"** Finalmente con esto estamos diciéndole a Docker el comando que queremos que ejecute al momento de lanzar la imagen.
 
 En esta configuración lo que hemos logrado, es crearnos una imagen con un sistema operativo basado en la imagen alpine desde su versión 3.7, puedes encontrár más información sobre esta imagen haciendo [click aquí][alpine_images], 
 
@@ -134,13 +140,13 @@ docker-env_app_1 exited with code 0
 
 Listo!, ya has conseguido configurar variables de entorno en un docker-compose pasándole parámetros mediante los argumentos creados en el Dockerfile de nuestra imagen.
 
-# Repaso
+## Repaso
 
 1. Hemos creado un Dockerfile que recibe un argumento dinámico
 2. Hemos lanzado la imagen y nos ha devuelto el valor que hemos pasado con Docker.
 3. Y finalmente hemos configurado un archivo docker-compose con el mismo objetivo.
 
-# Bonus
+## Bonus
 
 Para proteger nuestra imagen para que no se configure sin un parámetro — en el momento del build — podemos darle un valor por defecto a ese argumento. Veámoslo en código:
 
@@ -197,15 +203,15 @@ docker run -e NAME=Alexander --name mi-contenedor-3 saludo
 
 Excelente, el contenedor nos ha enviado el resultado que esperábamos y con esto, creo que ya estas listo para que con tu creatividad crees entornos personalizados para tus desarrollos con docker.
 
-# Conclusión
+## Conclusión
 
 Creo que esta bastante claro que Docker es una solución completa y muy personalizable, el uso de las variables de entorno apenas constituye una pequeña parte de todo lo que Docker puede hacer.
 
-## Leer más:
+### Leer más
 
 * Documentación oficial: [Argumentos en Docker][docker-docs-arg].
 
-# ¿Has encontrado un error en mi artículo?
+## ¿Has encontrado un error en mi artículo?
 
 Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa que debería mejorar y que debe ser actualizado en este post, puedes hacer un fork de [mi repositorio][repositorio] y enviarme un Pull Request con la corrección, o bien, en lugar de hacer un comentario, ruego me lo reportes en [el apartado de los issues de mi repositorio][issues].
 
@@ -216,6 +222,7 @@ Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa
 [docker-docs-arg]: https://docs.docker.com/engine/reference/builder/#arg
 [docker-hub-mysql]: https://hub.docker.com/_/mysql
 [wiki-env]: https://en.wikipedia.org/wiki/Environment_variable
+[wiki-arg]: https://es.wikipedia.org/wiki/Argumento_(inform%C3%A1tica)
 <!-- images -->
 [docker2]: https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/docker-arg-y-variables-de-entorno/assets/docker2.jpg "Imagen de consola de docker"
 <!-- Repositorio -->
