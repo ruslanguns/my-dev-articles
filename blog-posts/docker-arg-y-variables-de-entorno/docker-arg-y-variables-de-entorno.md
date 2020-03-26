@@ -47,7 +47,7 @@ mkdir docker-env && cd docker-env
 
 A continuación vamos a crear un archivo con el nombre Dockerfile y en este la siguiente configuración:
 
-```dockerfile
+```
 FROM alpine:3.7
 ARG NAME
 CMD echo "Hola ${NAME}!"
@@ -143,7 +143,7 @@ Para proteger nuestra imagen para que no se configure sin un parámetro — en e
 
 Vamos a editar el archivo Dockerfile y cambiaremos de esto:
 
-```dockerfile
+```
 FROM alpine:3.7
 ARG NAME
 CMD echo "Hola ${NAME}!"
@@ -151,7 +151,7 @@ CMD echo "Hola ${NAME}!"
 
 a esto:
 
-```dockerfile
+```
 FROM alpine:3.7
 ARG NAME=mundo
 RUN echo "Hola ${NAME}!"
