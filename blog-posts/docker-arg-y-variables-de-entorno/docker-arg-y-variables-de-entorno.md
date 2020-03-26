@@ -30,7 +30,7 @@ Si ejecutamos este comando, notaremos intuitivamente que si pasamos el valor a l
 
 # Inspiración
 
-Cuando programas y haces el deploy de una aplicación, te enfrentas a diferentes retos y procesos, que en este oficio, siempre van en aumento. Hace un tiempo atrás miraba la necesidad de crear una configuración, que sin las variables de entorno, hubiera sido imposible lograr el cometido. Saber hacerlo me hizo dar un gran paso adelante en la construcción de imágenes personalizadas y creo que se ha convertido en con lo convivo a diario.
+Cuando programas y haces el deploy de una aplicación, te enfrentas a diferentes retos y procesos, que en este oficio, siempre van en aumento. Hace un tiempo atrás miraba la necesidad de crear una configuración, que sin las variables de entorno, hubiera sido imposible lograr el cometido.
 
 El uso de argumentos y variables de entorno nos trae un excelente beneficio para comunicarnos con la aplicación mediante parámetros de configuración, data que preferiblemente, y en la mayoría de los casos, debe ser secreta, incluso nos puede ayudar a crear diferentes entornos de programación utilizando una sola configuración.
 
@@ -60,7 +60,7 @@ CMD echo "Hola ${NAME}!"
 
 * **FROM alpine:3.7**: Con esto vamos a indicarle a Docker la fuente o sistema operativo de nuestra imagen.
 * **ARG NAME**: Con la opción ARG indicamos el argumento que deseamos para nuestra imagen. Con esto le decimos a Docker, tu esperarás un argumento personalizado al momento de crear la imagen.
-* **RUN echo "Hola ${NAME}!"** Finalmente con esto estamos diciendole a Docker el comando que queremos que ejecute al momento de lanzar la imagen.
+* **CMD echo "Hola ${NAME}!"** Finalmente con esto estamos diciendole a Docker el comando que queremos que ejecute al momento de lanzar la imagen.
 
 En esta configuración lo que hemos logrado, es crearnos una imagen con un sistema operativo basado en la imagen alpine desde su versión 3.7, puedes encontrár más información sobre esta imagen haciendo [click aquí][alpine_images], 
 
