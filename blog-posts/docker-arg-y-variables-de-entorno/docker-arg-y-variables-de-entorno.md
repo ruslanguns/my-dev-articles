@@ -40,87 +40,173 @@ Vamos a crear una imagen que nos devuelva un Hola mundo en Docker que nos será 
 
 ## Creación de nuestro entorno de trabajo
 
-Creamos una carpeta en nuestro ordenador en el lugar que querramos, accedemos a ella y dentro creamos un archivo llamado "Dockerfile".
+Creamos una carpeta en nuestro ordenador en el lugar que queramos, accedemos a ella y dentro creamos un archivo llamado "Dockerfile".
 
 ```bash
 $ mkdir docker-env && cd docker-env
 ```
 
-Estos argumentos, se lo podemos pasar de diferentes maneras, lo único que debemos hacer es configurar una entrada en nuestro `Dockerfile` para que sepa que necesitamos que esté a la escucha de este argumento:
-
-Ejemplo:
+A continuación vamos a crear un archivo con el nombre Dockerfile y en este la siguiente configuración:
 
 ```dockerfile
-// code/demo-code.ts
-RUN echo "Hola ${NAME}!"
+FROM alpine:3.7
 ARG NAME
+CMD echo "Hola ${NAME}!"
 ```
 
-En el ejemplo anterior estoy definiendo una variable con el argumento NAME y este lo estoy pintando en un comando RUN para que imprima en consola el típico "Hola \$NAME" siendo NAME la variable dinámica que estamos pasando desde las variables de entorno de nuestro sistema operativo anfitrión las cuales pueden reemplazadas cuando consumamos la imagen.
+¿Qué tenemos aquí?
+* **FROM alpine:3.7**: Con esto vamos a indicarle a Docker la fuente o sistema operativo de nuestra imagen.
+* **ARG NAME**: Con la opción ARG indicamos el argumento que deseamos para nuestra imagen. Con esto le decimos a Docker, tu esperarás un argumento personalizado al momento de crear la imagen.
+* **RUN echo "Hola ${NAME}!"** Finalmente con esto estamos diciendole a Docker el comando que queremos que ejecute al momento de lanzar la imagen.
 
-# El momento del build
+En esta configuración lo que hemos logrado, es crearnos una imagen con un sistema operativo basado en la imagen alpine desde su versión 3.7, puedes encontrár más información sobre esta imagen haciendo [click aquí][alpine_images], 
 
-# Variables desde el comando del build
+A lo mejor te estas preguntando, ¿qué pasaría si no se define el argumento? bueno, Docker lo único que hace es ignorar y continuar con la ejecución del programa, lo que nos quiere decir que esta variable es undefined, o bien, es como si nunca hubiera existido. Podríamos crear una condición para validar y evitar que el programa se ejecute, o al menos introducirle un valor por defecto, te lo explicaré más adelante en este artículo.
 
-Si queremos ejecutar la imagen simplemente lanzamos el build con la bandera - build-arg <Nombre del argumento=valor_del
-argumento
-
-Ejemplo para este caso:
+Ya llego el momento de probar esto en la práctica. Lo primero es crear la imagen con el nombre 'saludo', para ello ejecutaremos la siguiente instrucción:
 
 ```bash
-docker build - build-arg NAME=RUSLAN .
+docker build -t saludo .
 ```
 
-# Variables desde el sistema operativo
+Después de ejecutarlo, Docker comenzará a descargar las dependencias y creará la imagen en nuestro sistema operativo, y si no nos lanza ningún error raro quiere decir que la imagen ya está lista.
 
-Dependiendo del sistema operativo puede que tengamos que exportar la variable de entorno de diferentes formas pero al menos en LINUX es de la siguiente manera:
+Ejemplo de lo que obtendremos por consola:
 
 ```bash
-export $NAME=Ruslan
+Sending build context to Docker daemon  3.072kB
+Step 1/3 : FROM alpine:3.7
+ ---> 6d1ef012b567
+Step 2/3 : ARG NAME
+ ---> Using cache
+ ---> 0cd8f552966f
+Step 3/3 : CMD echo "Hola ${NAME}!"
+ ---> Using cache
+ ---> dc225ab6e03c
+Successfully built dc225ab6e03c
+Successfully tagged saludo:latest
 ```
 
-Posteriormente para decirle a docker que este argumento se lo pasaremos dinámicamente simplemente no definimos ese valor, `docker build - build-arg NAME .` y él ya sabrá que debe estar a la escucha desde ese argumento.
+Ya tenemos nuestra imagen compilada y lista para usarse, ejecuta el siguiente comando con las instrucciones a continuación, para crearnos un contenedor con nombre 'mi-contenedor':
 
-> Tener en cuenta que si no hemos exportado la variable de entorno puede que dependiendo del fin de esa variable puede ser crucial para que la configuración se ejecute correctamente, pero siempre tener en cuenta que podemos hacer una buena práctica en colocar un valor por defecto desde el mismo Dockerfile, en caso que exista una variable con un valor por defecto Docker sabrá que queremos darle prioridad al argumento que hemos declarado mediante el comando del build por lo tanto éste será el valor definitivo de dicha variable y hará caso omiso del valor por defecto que hemos configurado en el archivo.
-> Pues hasta este punto ya sabemos cómo inicializar un valor y cómo dinamizarlo con las variables de entorno, ahora sabiendo que Docker es un sistema de contenedores de capas, nosotros también podemos modificar el valor de este argumento en el momento de consumir la imagen:
+```bash
+docker run -e NAME=Ruslan --name mi-contenedor saludo
 
-## Desde el Docker Compose
+// output: Hola Ruslan!
+```
 
-> En caso que no conozcas sobre DOCKER COMPOSE te recomiendo vallas hagas click en [este enlace](https://docs.docker.com/compose/) para leer más sobre él.
-> Para consumir variables de entorno desde el docker compose simplemente definimos la opcion environment dentro de la configuración de nuestros servicios:
+Si el mensaje de salida es 'Hola Ruslan!', lo has logrado. Y has conseguido configurar un contenedor con una imagen que recibe un argumento dinámicamente.
 
-Ejemplo:
+Ahora probaremos con el docker-compose, si no le conoces, es una herramienta que nos facilita la vida, nos simplifica la manera de cómo trabajamos con Docker, con él podemos configurar un script con todas las configuraciones para administrar los contenedores de Docker.
+
+Es momento de probar nuestro argumento dinámico con docker-compose, para esto utilizaremos la instrucción environment.
+
+Crea un archivo en la raíz de la carpeta con el nombre 'docker-compose.yml, con el contenido siguiente:
 
 ```yml
-version: "3"
+version: "3.7"
 services:
- hola:
- build: .
- environment:
- NAME: "Ruslan desde Compose"
+  app:
+    build: .
+    environment:
+      - NAME=Ruslan # Aquí estamos haciendo uso del argumento
 ```
 
-> Tener en cuenta que la sintaxis de los archivos yaml los obliga a tener indentaciones siempre. Por lo que mucho ojo al escribir aquí.
+> Hay muchas formas para invocar las variables de entorno desde docker-compose, yo he elegido la forma más sencilla para evitar complicaciones, si quieres leer más sobre esto, ve a [éste enlace][docker-compose-variables].
 
-## Desde la linea de comandos de Docker
-
-Con Docker run podemos pasar variables de entorno mediante la bandera `-e`.
-
-Ejemplo:
+Perfecto, ya tenemos lista la configuración y ahora vamos a usarla, ejecuta el siguiente comando en la consola:
 
 ```bash
-docker run -e "NAME=RUSLAN" ruslanguns/hello`
+docker-compose up
 ```
+
+Esta instrucción nos tiene que devolver algo como esto:
+
+```bash
+Recreating docker-env_app_1 ... done
+Attaching to docker-env_app_1
+app_1  | Hola Ruslan!
+docker-env_app_1 exited with code 0
+```
+
+Listo!, ya has conseguido configurar variables de entorno en un docker-compose pasándole parámetros mediante los argumentos creados en el Dockerfile de nuestra imagen.
+
+# Repaso
+
+1. Hemos creado un Dockerfile que recibe un argumento dinámico
+2. Hemos lanzado la imagen y nos ha devuelto el valor que hemos pasado con Docker.
+3. Y finalmente hemos configurado un archivo docker-compose con el mismo objetivo.
+
+# Bonus
+
+Para proteger nuestra imagen para que no se configure sin un parámetro — en el momento del build — podemos darle un valor por defecto a ese argumento. Veámoslo en código:
+
+Vamos a editar el archivo Dockerfile y cambiaremos de esto:
+
+```dockerfile
+FROM alpine:3.7
+ARG NAME
+CMD echo "Hola ${NAME}!"
+```
+
+a esto:
+
+```dockerfile
+FROM alpine:3.7
+ARG NAME=mundo
+RUN echo "Hola ${NAME}!"
+CMD echo "Hola ${NAME}!"
+```
+
+¿Qué ha pasado? hemos añadido el valor mundo al argumento NAME. Y he añadido una linea más a la instrucción `RUN echo "Hola ${NAME}!"` para que nos imprima en el texto del build el valor que hemos puesto, ya que éste solo quedará para reservada para el momento del build de la imagen únicamente guardándose en ella el valor en la configuración por defecto, permitiéndonos a nosotros siempre reconstruir la imagen con otro valor si es necesario.
+
+Lo primero es recrear la imagen:
+
+```bash
+docker build -t saludo .
+```
+
+Analicemos con atención el output de este comando:
+
+![alt text][docker2]
+
+Notemos que el paso 3/4 nos ha devuelto el Hola mundo!, con total seguridad sabemos que la imagen ha sido creada con esa variable tomada en consideración.
+
+Sabiendo eso, ahora vamos a consumir la imagen en un contenedor:
+
+```bash
+docker run --name mi-contenedor-2 saludo
+// output: Hola !
+```
+
+Notemos que a la instrucción sin proveer una variable de entorno, con el nombre "mi-contenedor-2" el output de la consola nos ha devuelto solo 'Hola !', pero no nos ha devuelto el mundo. Esto es un comportamiento esperado, la imagen solo en el momento de crearse ha a alojado el valor del argumento por defecto, y la ha usado para configurar el sistema.
+
+Si deseamos crear una imagen pero que use otro valor, simplemente debemos proveer la variable de entorno.
+
+Vamos a probarlo entonces, ejecuta la siguiente instrucción en la consola:
+
+```bash
+docker run -e NAME=Alexander --name mi-contenedor-3 saludo
+// output= Hola Alexander!
+```
+
+Excelente, el contenedor nos ha enviado el resultado que esperábamos y con esto, creo que ya estas listo para que con tu creatividad crees entornos personalizados para tus desarrollos con docker.
 
 # Conclusión
 
-Creo que esta bastante claro que Docker es una pasada, y en mi caso estoy en constante evolución en mi aprendizaje con él. En este pequeño artículo puedo mostrarles cómo cubrir una necesidad grande sobre el manejo personalizado de Docker, espero les sea de utilidad.
+Creo que esta bastante claro que Docker es una solución completa y muy personalizable, el uso de las variables de entorno apenas constituye una pequeña parte de todo lo que Docker puede hacer.
 
-# Referencias:
+## Leer más:
 
-- [Docker ARG](https://docs.docker.com/engine/reference/builder/#arg)
-- Article: [Docker ARG, ENV and .env - a Complete Guide](https://vsupalov.com/docker-arg-env-variable-guide/)
+* Documentación oficial: [Argumentos en Docker](https://docs.docker.com/engine/reference/builder/#arg).
 
 # ¿Has encontrado un error en mi artículo?
 
 Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa que debería mejorar y que debe ser actualizado en este post, puedes hacer un fork de [mi repositorio](https://github.com/ruslanguns/dev.to) y enviarme un Pull Request con la corrección, o bien, en lugar de hacer un comentario, ruego me lo reportes en [el apartado de los issues de mi repositorio](https://github.com/ruslanguns/dev.to/issues).
+
+
+<!-- TAGGED LINKS -->
+[alpine_images]: https://hub.docker.com/_/alpine
+[docker-compose-variables]: https://docs.docker.com/compose/environment-variables/
+<!-- images -->
+[docker2]: ./assets/docker2.jpg "Imagen 1"
