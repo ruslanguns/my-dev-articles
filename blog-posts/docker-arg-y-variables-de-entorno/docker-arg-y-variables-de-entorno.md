@@ -8,6 +8,8 @@ series:
 canonical_url:
 ---
 
+En la parte inferior del artículo colocaré el enlace al repositorio con el código resultante.
+
 ## Introducción
 
 Este artículo esta dirigido para personas que tienen experiencia básica con Docker, o bien desean repasar un poco las bondades que nos ofrece este sistema de contenedores.
@@ -210,11 +212,11 @@ Creo que esta bastante claro que Docker es una solución completa y muy personal
 ### Leer más
 
 * Documentación oficial: [Argumentos en Docker][docker-docs-arg].
+* Repositorio con el código: [Github][code-repo]
 
 ## ¿Has encontrado un error en mi artículo?
 
-Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa que debería mejorar y que debe ser actualizado en este post, puedes hacer un fork de [mi repositorio][repositorio] y enviarme un Pull Request con la corrección, o bien, en lugar de hacer un comentario, ruego me lo reportes en [el apartado de los issues de mi repositorio][issues].
-
+Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa que debería mejorar y que debe ser actualizado en este post, puedes hacer un fork de [mi repositorio][repositorio] y enviarme un Pull Request con la corrección, o bien, en lugar de hacer un comentario, ruego me lo reportes en [el apartado de los issues de mi repositorio][issues] de mis artículos.
 
 <!-- TAGGED LINKS -->
 [alpine_images]: https://hub.docker.com/_/alpine
@@ -228,3 +230,4 @@ Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa
 <!-- Repositorio -->
 [issues]: https://github.com/ruslanguns/my-dev-articles/issues
 [repositorio]: https://github.com/ruslanguns/my-dev-articles
+[code-repo]: https://github.com/ruslanguns/online-resources/tree/master/articles/docker-arg-y-variables-de-entorno
