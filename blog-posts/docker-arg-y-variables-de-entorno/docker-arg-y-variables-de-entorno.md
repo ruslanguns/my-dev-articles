@@ -1,7 +1,7 @@
 ---
 published: false
 title: 'Docker ARG y Variables de Entorno'
-cover_image: 'https://raw.githubusercontent.com/ruslanguns/dev.to/master/blog-posts/docker-arg-y-variables-de-entorno/assets/cover_image.png'
+cover_image: 'https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/docker-arg-y-variables-de-entorno/assets/cover_image.png'
 description: 'Te enseñaré cómo usar los argumentos o variables de entorno en Docker'
 tags: docker, docker-compose, deploy, arg, arguments, development, software, backend, argumentos, variables de entorno
 series:
