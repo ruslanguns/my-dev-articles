@@ -7,7 +7,6 @@ tags: docker, docker-compose, deploy, arg, arguments, development, software, bac
 series:
 canonical_url:
 ---
-# Introducción
 
 Este artículo esta dirigido para personas que tienen experiencia básica con Docker, o bien desean repasar un poco las bondades que nos ofrece este sistema de contenedores.
 
