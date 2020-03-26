@@ -1,6 +1,6 @@
 ---
 published: false
-title: "Docker ARG y Variables de Entorno"
+title: "Argmentos y variables de entorno en Docker"
 cover_image: "https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/docker-arg-y-variables-de-entorno/assets/cover_image.png"
 description: "Te enseñaré cómo usar los argumentos o variables de entorno en Docker"
 tags: docker, arguments, arg, env
@@ -21,7 +21,6 @@ Una variable de entorno según la [wikipedia][wiki-env] es un valor con nombre d
 Ejemplo:
 
 ```bash
-// bash snippet
 docker run -e MYSQL_ROOT_PASSWORD=mi-contraseña mysql
 ```
 
@@ -44,7 +43,6 @@ Vamos a crear una imagen que nos devuelva un Hola mundo en Docker que nos será 
 Creamos una carpeta en nuestro ordenador en el lugar que queramos, accedemos a ella y dentro creamos un archivo llamado "Dockerfile".
 
 ```bash
-// bash console
 mkdir docker-env && cd docker-env
 ```
 
@@ -70,7 +68,6 @@ A lo mejor te estas preguntando, ¿qué pasaría si no se define el argumento? b
 Ya llego el momento de probar esto en la práctica. Lo primero es crear la imagen con el nombre 'saludo', para ello ejecutaremos la siguiente instrucción:
 
 ```bash
-// bash console
 docker build -t saludo .
 ```
 
@@ -79,7 +76,6 @@ Después de ejecutarlo, Docker comenzará a descargar las dependencias y creará
 Ejemplo de lo que obtendremos por consola:
 
 ```bash
-// bash console
 Sending build context to Docker daemon  3.072kB
 Step 1/3 : FROM alpine:3.7
  ---> 6d1ef012b567
@@ -96,7 +92,6 @@ Successfully tagged saludo:latest
 Ya tenemos nuestra imagen compilada y lista para usarse, ejecuta el siguiente comando con las instrucciones a continuación, para crearnos un contenedor con nombre 'mi-contenedor':
 
 ```bash
-// bash console
 docker run -e NAME=Ruslan --name mi-contenedor saludo
 
 // output: Hola Ruslan!
@@ -125,14 +120,12 @@ services:
 Perfecto, ya tenemos lista la configuración y ahora vamos a usarla, ejecuta el siguiente comando en la consola:
 
 ```bash
-// bash console
 docker-compose up
 ```
 
 Esta instrucción nos tiene que devolver algo como esto:
 
 ```bash
-// bash console
 Recreating docker-env_app_1 ... done
 Attaching to docker-env_app_1
 app_1  | Hola Ruslan!
@@ -175,7 +168,6 @@ CMD echo "Hola ${NAME}!"
 Lo primero es recrear la imagen:
 
 ```bash
-// bash console
 docker build -t saludo .
 ```
 
@@ -188,7 +180,6 @@ Notemos que el paso 3/4 nos ha devuelto el Hola mundo!, con total seguridad sabe
 Sabiendo eso, ahora vamos a consumir la imagen en un contenedor:
 
 ```bash
-// bash console
 docker run --name mi-contenedor-2 saludo
 // output: Hola !
 ```
@@ -200,7 +191,6 @@ Si deseamos crear una imagen pero que use otro valor, simplemente debemos provee
 Vamos a probarlo entonces, ejecuta la siguiente instrucción en la consola:
 
 ```bash
-// bash console
 docker run -e NAME=Alexander --name mi-contenedor-3 saludo
 // output= Hola Alexander!
 ```
@@ -227,7 +217,7 @@ Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa
 [docker-hub-mysql]: https://hub.docker.com/_/mysql
 [wiki-env]: https://en.wikipedia.org/wiki/Environment_variable
 <!-- images -->
-[docker2]: ./assets/docker2.jpg "Imagen 1"
+[docker2]: https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/docker-arg-y-variables-de-entorno/assets/docker2.jpg "Imagen de consola de docker"
 <!-- Repositorio -->
 [issues]: https://github.com/ruslanguns/my-dev-articles/issues
 [repositorio]: https://github.com/ruslanguns/my-dev-articles
