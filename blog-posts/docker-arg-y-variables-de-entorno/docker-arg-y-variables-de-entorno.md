@@ -20,6 +20,7 @@ Una variable de entorno según la [wikipedia][wiki-env] es un valor con nombre d
 Ejemplo:
 
 ```bash
+// bash snippet
 docker run -e MYSQL_ROOT_PASSWORD=mi-contraseña mysql
 ```
 
@@ -48,6 +49,7 @@ mkdir docker-env && cd docker-env
 A continuación vamos a crear un archivo con el nombre Dockerfile y en este la siguiente configuración:
 
 ```
+// ./code/sample1.Dockerfile
 FROM alpine:3.7
 ARG NAME
 CMD echo "Hola ${NAME}!"
@@ -74,6 +76,7 @@ Después de ejecutarlo, Docker comenzará a descargar las dependencias y creará
 Ejemplo de lo que obtendremos por consola:
 
 ```bash
+// /code/demo-code.ts
 Sending build context to Docker daemon  3.072kB
 Step 1/3 : FROM alpine:3.7
  ---> 6d1ef012b567
@@ -90,6 +93,7 @@ Successfully tagged saludo:latest
 Ya tenemos nuestra imagen compilada y lista para usarse, ejecuta el siguiente comando con las instrucciones a continuación, para crearnos un contenedor con nombre 'mi-contenedor':
 
 ```bash
+// /code/demo-code.ts
 docker run -e NAME=Ruslan --name mi-contenedor saludo
 
 // output: Hola Ruslan!
@@ -104,6 +108,7 @@ Es momento de probar nuestro argumento dinámico con docker-compose, para esto u
 Crea un archivo en la raíz de la carpeta con el nombre 'docker-compose.yml, con el contenido siguiente:
 
 ```yml
+// /code/demo-code.ts
 version: "3.7"
 services:
   app:
@@ -117,12 +122,14 @@ services:
 Perfecto, ya tenemos lista la configuración y ahora vamos a usarla, ejecuta el siguiente comando en la consola:
 
 ```bash
+// /code/demo-code.ts
 docker-compose up
 ```
 
 Esta instrucción nos tiene que devolver algo como esto:
 
 ```bash
+// /code/demo-code.ts
 Recreating docker-env_app_1 ... done
 Attaching to docker-env_app_1
 app_1  | Hola Ruslan!
@@ -144,6 +151,7 @@ Para proteger nuestra imagen para que no se configure sin un parámetro — en e
 Vamos a editar el archivo Dockerfile y cambiaremos de esto:
 
 ```
+// /code/demo-code.ts
 FROM alpine:3.7
 ARG NAME
 CMD echo "Hola ${NAME}!"
@@ -152,6 +160,7 @@ CMD echo "Hola ${NAME}!"
 a esto:
 
 ```
+// /code/demo-code.ts
 FROM alpine:3.7
 ARG NAME=mundo
 RUN echo "Hola ${NAME}!"
@@ -163,6 +172,7 @@ CMD echo "Hola ${NAME}!"
 Lo primero es recrear la imagen:
 
 ```bash
+// /code/demo-code.ts
 docker build -t saludo .
 ```
 
@@ -175,6 +185,7 @@ Notemos que el paso 3/4 nos ha devuelto el Hola mundo!, con total seguridad sabe
 Sabiendo eso, ahora vamos a consumir la imagen en un contenedor:
 
 ```bash
+// /code/demo-code.ts
 docker run --name mi-contenedor-2 saludo
 // output: Hola !
 ```
@@ -186,6 +197,7 @@ Si deseamos crear una imagen pero que use otro valor, simplemente debemos provee
 Vamos a probarlo entonces, ejecuta la siguiente instrucción en la consola:
 
 ```bash
+// /code/demo-code.ts
 docker run -e NAME=Alexander --name mi-contenedor-3 saludo
 // output= Hola Alexander!
 ```
