@@ -14,17 +14,15 @@ En la parte inferior del artículo colocaré el enlace al repositorio con el có
 
 Este artículo esta dirigido para personas que tienen experiencia básica con Docker, o bien desean repasar un poco las bondades que nos ofrece este sistema de contenedores.
 
-Voy a mostrarte aquí un breve ejemplo para usar las variables de entorno en el despliegue de contenedores en Docker, asimismo te enseñaré cómo configurarlas de forma dinámica.
+Voy a mostrarte aquí un breve ejemplo para usar los argumentos y variables de entorno en el despliegue de contenedores en Docker, asimismo te enseñaré cómo configurarlas para que sean dinámicas y fáciles de gestionar.
 
 > Pero antes de todo, **¿qué es una variable de entorno?**
 
-Una variable de entorno según la [wikipedia][wiki-env] — es un valor con nombre dinámico que puede afectar la forma en que los procesos en ejecución se comportarán en una computadora. Son parte del entorno en el que se ejecuta un proceso —. En otras palabras, imaginemos estamos creando un contenedor que despliegue una imagen con base de datos como MySQL o Postgres, si vamos a las documentaciones oficiales notaremos que para crear una contraseña o un nombre para una base de datos debemos enviarle unos parámetros:
+Una variable de entorno según la [wikipedia][wiki-env] — es un valor con nombre dinámico que puede afectar la forma en que los procesos en ejecución se comportarán en una computadora. Son parte del entorno en el que se ejecuta un proceso —. En otras palabras, imaginemos estamos creando un contenedor que despliegue una imagen con base de datos como MySQL o Postgres, si vamos a las documentaciones oficiales notaremos que para crear una contraseña o un nombre para una base de datos debemos enviarle unos parámetros mediante variables con nuestros valores, pues éstas variables son argumentos la imagen de docker recibirá a través de las variables de entorno.
 
-También es importante que sepamos qué es un argumento y cómo se diferencia de una variable de entorno.
+Es importante que sepamos qué es un argumento, según nuestra [wikipedia][wiki-arg], — un parámetro es una variable utilizada para recibir valores de entrada en una rutina, subrutina o método. Dichos valores, que serán enviados desde la rutina invocante, son llamados argumentos —. Entonces es un argumento que "recibe" el valor del parámetro por parte de las variables de entorno para ejecutar una rutina, o un proceso.
 
-Según nuestra [wikipedia][wiki-arg], — un parámetro es una variable utilizada para recibir valores de entrada en una rutina, subrutina o método. Dichos valores, que serán enviados desde la rutina invocante, son llamados argumentos —. Entonces es un parámetro que "recibe" un valor por parte de las variables de entorno para ejecutar una rutina, o un proceso, en este caso para nuestras imágenes.
-
-Si estos conceptos no los tienes muy claros, no te preocupes, intentaré explicártelo en el resto del artículo con un ejemplo práctico en el que tú podrás diferenciar el uno del otro.
+Si estos conceptos no están aún claros, no te preocupes, intentaré explicártelo en el resto del artículo, pero ahora, con un breve ejemplo, en el que tú podrás diferenciar el uno del otro.
 
 Ejemplo:
 
@@ -34,7 +32,9 @@ docker run -e MYSQL_ROOT_PASSWORD=mi-contraseña mysql
 
 > Ve a [este enlace][docker-hub-mysql] para saber cómo construir un contenedor de Mysql
 
-Si ejecutamos este comando, notaremos intuitivamente que si pasamos el valor a la variable `MYSQL_ROOT_PASSWORD=mi-contraseña` siendo 'mi-contraseña' la contraseña ROOT que estamos asignando a nuestra base de datos y ésta variable de entorno es la que usaremos a continuación para comunicarnos con la base de datos. Lo más probable que hayas configurado cientos de veces este tipo de variables, y puede que a lo mejor te preguntes cómo instalarla en nuestra imagen, justamente eso es lo que intentaré enseñarte en este artículo.
+Si ejecutamos este comando, notaremos intuitivamente que si pasamos el valor a la variable `MYSQL_ROOT_PASSWORD=mi-contraseña` siendo 'mi-contraseña' la contraseña ROOT que estamos asignando a nuestra base de datos y ésta variable de entorno y el parámetro resultante es el que usaremos a continuación para comunicarnos con la base de datos.
+
+Lo más probable que hayas configurado cientos de veces este tipo de variables, y puede que a lo mejor te preguntes cómo instalar en nuestra imagen el argumento para que esté a la escucha de estos parámetros, pues hoy es tu día de suerte, justamente es eso lo que intentaré enseñarte a continuación.
 
 ## Inspiración
 
@@ -216,7 +216,7 @@ Creo que esta bastante claro que Docker es una solución completa y muy personal
 
 ## ¿Has encontrado un error en mi artículo?
 
-Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa que debería mejorar y que debe ser actualizado en este post, puedes hacer un fork de [mi repositorio][repositorio] y enviarme un Pull Request con la corrección, o bien, en lugar de hacer un comentario, ruego me lo reportes en [el apartado de los issues de mi repositorio][issues] de mis artículos.
+Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa que debería mejorar y que debe ser actualizado en este post, puedes hacer un fork de [mi repositorio][repositorio] y enviarme un Pull Request con la corrección, o bien, en lugar de hacer un comentario, ruego me lo reportes en [la sección de issues en el repositorio][issues] de mis artículos.
 
 <!-- TAGGED LINKS -->
 [alpine_images]: https://hub.docker.com/_/alpine
