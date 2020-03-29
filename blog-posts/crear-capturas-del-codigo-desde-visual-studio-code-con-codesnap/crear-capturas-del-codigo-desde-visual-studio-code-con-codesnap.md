@@ -14,7 +14,7 @@ Si quieres más contenido como éste por favor no dudes en suscribirte y apoyarm
 
 En este artículo voy a enseñarte cómo capturar el código de tu editor [Visual Studio Code][vscode] (VSCode) de una forma elegante usando una extensión llamada "[CodeSnap][codesnap]" totalmente gratuita para nuestro editor favorito, si quieres ver una muestra del resultado míralo en la siguiente imagen:
 
-![CodeSnap Capture](https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/crear-capturas-del-codigo-desde-visual-studio-code-con-codesnap/assets/cover_image.png)
+![alt CodeSnap](https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/crear-capturas-del-codigo-desde-visual-studio-code-con-codesnap/assets/cover_image.png)
 
 ## Alternativas
 
@@ -30,7 +30,7 @@ Esta no es la única herramienta con la que puedes realizar capturas de código,
 
 ### CodeSpap 😱
 
-[CodeSnap][codesnap], es un proyecto que basado en Polacode pero que extiende sus configuraciones, por lo que funcionan de la misma forma y sus diferencias ya viene en su valor agregado. Por lo que también es exclusiva para usarse dentro de VScode.
+[CodeSnap][codesnap], es un proyecto que basado en Polacode por lo que funcionan de la misma manera pero su diferencia está principalmente en las configuraciones avanzadas y en el valor agregado que éste ofrece.
 
 #### Características de CodeSnap
 
