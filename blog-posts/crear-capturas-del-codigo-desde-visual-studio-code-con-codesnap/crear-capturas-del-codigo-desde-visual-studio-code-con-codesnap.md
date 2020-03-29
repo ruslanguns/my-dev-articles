@@ -96,4 +96,4 @@ Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa
 
 [image-carbon]: https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/crear-capturas-del-codigo-desde-visual-studio-code-con-codesnap/assets/carbon.png
 
-[image-polacode]: https://github.com/octref/polacode/blob/master/demo/usage.gif
+[image-polacode]: https://raw.githubusercontent.com/octref/polacode/master/demo/2.png
