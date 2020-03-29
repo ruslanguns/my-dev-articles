@@ -51,10 +51,11 @@ Vamos a crear una imagen que nos devuelva un Hola mundo en Docker que nos será 
 Creamos una carpeta en nuestro ordenador en el lugar que queramos, accedemos a ella y dentro creamos un archivo llamado "Dockerfile".
 
 ```bash
-mkdir docker-env && cd docker-env
+$ mkdir docker-env && cd docker-env
+$ touch Dockerfile
 ```
 
-A continuación vamos a crear un archivo con el nombre Dockerfile y en este la siguiente configuración:
+A continuación vamos a introducirle los siguientes datos al archivo Dockerfile:
 
 ```sh
 // Dockerfile
