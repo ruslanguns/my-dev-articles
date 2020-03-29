@@ -14,7 +14,7 @@ Si quieres más contenido como éste por favor no dudes en suscribirte y apoyarm
 
 En este artículo voy a enseñarte cómo capturar el código de tu editor [Visual Studio Code][vscode] (VSCode) de una forma elegante usando una extensión llamada "[CodeSnap][codesnap]" totalmente gratuita para nuestro editor favorito, si quieres ver una muestra del resultado míralo en la siguiente imagen:
 
-![alt CodeSnap](https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/crear-capturas-del-codigo-desde-visual-studio-code-con-codesnap/assets/cover_image.png)
+![alt CodeSnap][image-codesnap]
 
 ## Alternativas
 
@@ -22,13 +22,19 @@ Esta no es la única herramienta con la que puedes realizar capturas de código,
 
 ### Carbon 😯
 
+![alt Carbon][image-carbon]
+
 [Carbon][carbon] es una aplicación web pionera de esta moda, en la que tenemos que copiar el código visitar su web, elegir el lenguaje de nuestro código y posteriormente exportar la imagen, aunque sin duda el resultado es impresionante y que en la actualidad una de las herramientas más populares con más de 25 temas y que soporta muchos lenguajes, súmamente intuitivo y con el que puedes obtener resultados impresionantes. Además cuenta con la posibilidad de que copies la imagen al portapapeles, la compartas por twitter, la puedas también exportar en PNG o SVG, y alguna cosa más. Puede que se me olvide alguna característica importante, por favor escríbelo en los comentarios si se me ha escapado algo importante de Carbon.
 
 ### Polacode 🤩
 
+![alt Image polacode][image-polacode]
+
 [Polacode][polacode_marketplace] es una extensión de [VSCode][vscode] que la descubrí podo después de comenzar a usar Carbon, básicamente es una herramienta que desde el mismo VScode nos permite a partir de una selección de código generar una imagen que en la mayoría de los casos incluso tiene el mismo tema que usamos, sin duda una de las herramientas más populares de su tipo. Solo puede usarse dentro de VScode por lo que no te será compatible con otros editores de texto. Ésta extensión nos permite personalizar el fondo de pantalla, la transparencia y a lo mejor un par de cosas más.
 
 ### CodeSpap 😱
+
+![Codesnap][image-codesnap2]
 
 [CodeSnap][codesnap], es un proyecto que basado en Polacode por lo que funcionan de la misma manera pero su diferencia está principalmente en las configuraciones avanzadas y en el valor agregado que éste ofrece.
 
@@ -83,3 +89,11 @@ Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa
 [issues]: https://github.com/ruslanguns/my-dev-articles/issues
 [repositorio]: https://github.com/ruslanguns/my-dev-articles
 [code-repo]: https://github.com/ruslanguns/online-resources/tree/master/articles/docker-arg-y-variables-de-entorno
+<!-- Images -->
+[image-codesnap]: https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/crear-capturas-del-codigo-desde-visual-studio-code-con-codesnap/assets/cover_image.png
+
+[image-codesnap2]: https://raw.githubusercontent.com/kufii/CodeSnap/master/examples/material_operator-mono.png
+
+[image-carbon]: https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/crear-capturas-del-codigo-desde-visual-studio-code-con-codesnap/assets/carbon.png
+
+[image-polacode]: https://github.com/octref/polacode/blob/master/demo/usage.gif
