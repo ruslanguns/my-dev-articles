@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: "Crear capturas del código desde Visual Studio Code con CodeSnap"
 cover_image: "https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/crear-capturas-del-codigo-desde-visual-studio-code-con-codesnap/assets/cover_image.png"
 description: "Te enseñaré cómo realizar una captura de tu código para que lo compartas de una forma elegante"
