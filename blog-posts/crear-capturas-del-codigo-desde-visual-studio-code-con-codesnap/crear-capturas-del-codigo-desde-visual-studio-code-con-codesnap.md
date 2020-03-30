@@ -8,11 +8,11 @@ series:
 canonical_url:
 ---
 
-Si quieres más contenido como éste por favor no dudes en suscribirte y apoyarme con un comentario, muchas gracias.
+Si quieres más contenido como éste por favor no dudes en suscribirte y apoyarme con un comentario o difundirlo con el mundo, muchas gracias.
 
 ## Introducción
 
-En este artículo voy a enseñarte cómo capturar el código de tu editor [Visual Studio Code][vscode] (VSCode) de una forma elegante usando una extensión llamada "[CodeSnap][codesnap]" totalmente gratuita para nuestro editor favorito, si quieres ver una muestra del resultado míralo en la siguiente imagen:
+En este artículo voy a enseñarte cómo capturar el código de tu editor [Visual Studio Code][vscode] (VSCode) de una forma elegante usando una extensión llamada "[CodeSnap][codesnap]" totalmente gratuita para nuestro editor favorito, si quieres ver una muestra del resultado:
 
 ![alt CodeSnap][image-codesnap]
 
@@ -24,13 +24,13 @@ Esta no es la única herramienta con la que puedes realizar capturas de código,
 
 ![alt Carbon][image-carbon]
 
-[Carbon][carbon] es una aplicación web pionera de esta moda, en la que tenemos que copiar el código visitar su web, elegir el lenguaje de nuestro código y posteriormente exportar la imagen, aunque sin duda el resultado es impresionante y que en la actualidad una de las herramientas más populares con más de 25 temas y que soporta muchos lenguajes, súmamente intuitivo y con el que puedes obtener resultados impresionantes. Además cuenta con la posibilidad de que copies la imagen al portapapeles, la compartas por twitter, la puedas también exportar en PNG o SVG, y alguna cosa más. Puede que se me olvide alguna característica importante, por favor escríbelo en los comentarios si se me ha escapado algo importante de Carbon.
+[Carbon][carbon] es una aplicación web pionera de esta moda, en la que tenemos que copiar el código visitar su web, elegir el lenguaje de nuestro código y posteriormente exportar la imagen, sin duda el resultado es impresionante con más de 25 temas y que soporta muchos lenguajes, puedes también puedes exportar el resultado de la imagen o copiarla mediante una opción que nos ofrece en el portapapeles, compartirla en tu red social de twitter y alguna cosa más. En el caso que se me olvide mencionar algo interesante de esta herramienta, te pido que me lo dejes en los comentarios.
 
 ### Polacode 🤩
 
 ![alt Image polacode][image-polacode]
 
-[Polacode][polacode_marketplace] es una extensión de [VSCode][vscode] que la descubrí podo después de comenzar a usar Carbon, básicamente es una herramienta que desde el mismo VScode nos permite a partir de una selección de código generar una imagen que en la mayoría de los casos incluso tiene el mismo tema que usamos, sin duda una de las herramientas más populares de su tipo. Solo puede usarse dentro de VScode por lo que no te será compatible con otros editores de texto. Ésta extensión nos permite personalizar el fondo de pantalla, la transparencia y a lo mejor un par de cosas más.
+[Polacode][polacode_marketplace] es una extensión de [VSCode][vscode] que la descubrí podo después de comenzar a usar Carbon, básicamente es una herramienta que nos permite tener resultados similares pero que funciona directamente desde el mismo VScode, ésta nos permite a partir de una selección de código generar una imagen con la misma fuente de letras que usamos en nuestro editor, sin duda una de las herramientas más populares de su tipo. Solo puede usarse dentro de VScode por lo que no te será compatible con otros editores de texto. Ésta extensión nos permite personalizar el fondo de pantalla, la transparencia y a lo mejor un par de cosas más.
 
 ### CodeSpap 😱
 
@@ -49,15 +49,15 @@ Esta no es la única herramienta con la que puedes realizar capturas de código,
 
 ## Conclusión
 
-En los pocos días que llevo probando a [CodeSnap][codesnap] creo que, sin lugar a dudas, es mi extensión favorita para compartir trazas de código con mis amigos. Si te gusta VScode tanto como a mi, no querras perder la oportunidad de probarlo esta increíble extensión.
+En los pocos días que llevo probando a [CodeSnap][codesnap] creo que, y sin lugar a dudas, es mi extensión favorita para compartir trazas de código con mis amigos. Si te gusta VScode tanto como a mi, no querás perder la oportunidad de probar esta increíble extensión.
 
-Las tres herramientas que les he traído son totalmente open source y seguro que ustedes podrán contribuir con estos proyectos si así lo quieren.
+Las tres herramientas que les he traído son totalmente open source y seguro que ustedes podrán contribuir con estos proyectos si así lo desean.
 
-En el caso que no uses [VSCode][vscode] y uses [Sublime Text][sublimetext], [Atom][atom], o cualquier otro, no cabe duda que la herramienta que yo elegiría sería [Carbon][carbon] ya que es muy fácil de usar y esta al alcance de un Copy & Paste.
+En el caso que no uses [VSCode][vscode] y uses [Sublime Text][sublimetext], [Atom][atom], o cualquier otro, no cabe duda que la herramienta que yo elegiría sería [Carbon][carbon] ya que es muy fácil de usar y está al alcance de un Copy & Paste.
 
 ## Notas finales
 
-Espero que te haya gustado mi artículo no olvides darme un me gusta y déjame en los comentarios que opinas de mi artículo, también comparte en los comentarios si conoces otras alternativas que puedas conocer. ¡Gracias! 😊
+Espero que te haya gustado mi artículo no olvides darme un me gusta y compartirlo con otros, déjame en los comentarios tus opiniones, y en el caso que conozcas otras alternativas déjalo en los comentarios, ¡gracias!. 😊
 
 ### Leer más
 
