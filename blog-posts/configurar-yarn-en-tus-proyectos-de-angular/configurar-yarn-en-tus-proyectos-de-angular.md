@@ -28,9 +28,8 @@ Si has encontrado un error tipográfico, expresión, referencia o cualquier cosa
 
 ## Más artículos de Ruslán González
 
-* [Argumentos y variables de entorno en Docker](https://dev.to/ruslangonzalez/argumentos-y-variables-de-entorno-en-docker-j9o)
-* [Crear capturas del código desde Visual Studio Code con CodeSnap](https://dev.to/ruslangonzalez/crear-capturas-del-codigo-desde-visual-studio-code-con-codesnap-13hb)
-
+{% link https://dev.to/ruslangonzalez/argumentos-y-variables-de-entorno-en-docker-j9o %}
+{% link https://dev.to/ruslangonzalez/crear-capturas-del-codigo-desde-visual-studio-code-con-codesnap-13hb %}
 
 <!-- TAGGED LINKS -->
 [alpine_images]: https://hub.docker.com/_/alpine
