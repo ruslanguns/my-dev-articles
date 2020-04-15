@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: "Configurar YARN en tus proyectos de Angular - VIDEO"
 cover_image: "https://raw.githubusercontent.com/ruslanguns/my-dev-articles/master/blog-posts/configurar-yarn-en-tus-proyectos-de-angular/assets/cover_image.png"
 description: "Aprenderás cómo configurar Yarn en tus proyectos de Angular"
@@ -21,11 +21,6 @@ Voy a enseñarte a configurar Yarn en tus paquetes de Angular y qué mejor que a
 Espero que te haya gustado el vídeo, si tienes alguna pregunta por favor no dudes de escribírmela en los comentarios, estaré animado de conocer tus opiniones al respecto.
 
 Ya lo sabes, no olvides suscribirte, darle me gusta y compartir este artículo o mi vídeo en tus redes sociales para contribuir conmigo.
-
-### Leer más
-
-* Documentación oficial: [Argumentos en Docker][docker-docs-arg].
-* Repositorio con el código: [Github][code-repo]
 
 ## ¿Has encontrado un error en mi artículo?
 
