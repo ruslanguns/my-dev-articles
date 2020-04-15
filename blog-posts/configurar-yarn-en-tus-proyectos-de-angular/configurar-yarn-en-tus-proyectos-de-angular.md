@@ -8,7 +8,7 @@ series:
 canonical_url:
 ---
 
-Voy a enseñarte a configurar Yarn en tus paquetes de Angular y qué mejor que a través de un vídeo de Youtube.
+Voy a enseñarte a configurar Yarn en tus proyectos de Angular y qué mejor que a través de un vídeo de Youtube.
 
 [Angular](https://angular.io) es un framework para desarrollo de aplicaciones basado en Typescript y mantenido por la comunidad de Google y utilizado por muchas empresas en el sector tecnológico sobre todo para soluciones empresariales robustas, confiables y con gran performance.
 
