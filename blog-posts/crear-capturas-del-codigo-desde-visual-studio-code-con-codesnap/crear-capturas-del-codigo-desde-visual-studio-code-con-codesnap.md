@@ -30,7 +30,7 @@ Esta no es la única herramienta con la que puedes realizar capturas de código,
 
 ![alt Image polacode][image-polacode]
 
-[Polacode][polacode_marketplace] es una extensión de [VSCode][vscode] que la descubrí podo después de comenzar a usar Carbon, básicamente es una herramienta que nos permite tener resultados similares pero que funciona directamente desde el mismo VScode, ésta nos permite a partir de una selección de código generar una imagen con la misma fuente de letras que usamos en nuestro editor, sin duda una de las herramientas más populares de su tipo. Solo puede usarse dentro de VScode por lo que no te será compatible con otros editores de texto. Ésta extensión nos permite personalizar el fondo de pantalla, la transparencia y a lo mejor un par de cosas más.
+[Polacode][polacode_marketplace] es una extensión de [VSCode][vscode] que la descubrí poco después de comenzar a usar Carbon, básicamente es una herramienta que nos permite tener resultados similares pero que funciona directamente desde el mismo VScode, ésta nos permite a partir de una selección de código generar una imagen con la misma fuente de letras que usamos en nuestro editor, sin duda una de las herramientas más populares de su tipo. Solo puede usarse dentro de VScode por lo que no te será compatible con otros editores de texto. Ésta extensión nos permite personalizar el fondo de pantalla, la transparencia y a lo mejor un par de cosas más.
 
 ### CodeSpap 😱
 
