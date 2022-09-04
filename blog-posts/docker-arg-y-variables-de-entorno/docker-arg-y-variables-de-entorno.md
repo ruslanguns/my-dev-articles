@@ -210,6 +210,8 @@ Excelente, el contenedor nos ha enviado el resultado que esperábamos y con esto
 
 Creo que esta bastante claro que Docker es una solución completa y muy personalizable, el uso de las variables de entorno apenas constituye una pequeña parte de todo lo que Docker puede hacer.
 
+Recuerda que puedes encontrar contenido mio en mi [canal de Youtube](https://youtube.com/ruslangonzalez), en mis directos por [Twitch](https://twitch.com/rusgunx), o a través de [Twitter](https://twitter.com/ruslangonzalez).
+
 ### Leer más
 
 * Documentación oficial: [Argumentos en Docker][docker-docs-arg].
